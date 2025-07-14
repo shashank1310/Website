@@ -1265,7 +1265,7 @@ audio {
 	margin-top: 50px;
 }
 .message {
-	margin-top: 200px;
+	margin-top: 400px;
 	display: none;
 }
 .message p {
@@ -1316,7 +1316,7 @@ audio {
     font-size: 28px;
   }
   .message {
-    margin-top: 80px;
+    margin-top: 200px;
   }
   .message p {
     font-size: 18px;
