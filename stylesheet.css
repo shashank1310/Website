@@ -1305,3 +1305,46 @@ audio {
     		-webkit-transform: scale(0.9);
     	}
     }*/
+
+@media (max-width: 600px) {
+  .balloons {
+    width: 60px;
+    height: 110px;
+    background-size: 60px 110px;
+  }
+  .balloons h2 {
+    font-size: 28px;
+  }
+  .message {
+    margin-top: 80px;
+  }
+  .message p {
+    font-size: 18px;
+    padding: 0 8px;
+  }
+  .cake-cover {
+    margin-top: 20px;
+  }
+  .btn-primary {
+    padding: 8px;
+    font-size: 14px;
+  }
+  .navbar-fixed-bottom {
+    position: static;
+    margin-top: 20px;
+  }
+  .container {
+    padding: 0 2px;
+  }
+  .bulb {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+  .bulb-holder {
+    height: 40px;
+  }
+  .bannar {
+    max-width: 95vw;
+  }
+}
