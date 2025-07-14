@@ -1056,7 +1056,7 @@ audio {
 	100% {
 		-ms-transform:translate(0px,0px);
 	}
-}o
+}
 @keyframes bannar_come {
 	0%{
 		transform:translate(0px,-1000px);
@@ -1110,9 +1110,6 @@ audio {
 }
 #b6,#b66{
 	background-image: url('b6.png');
-}
-#b7,#b77{
-	background-image: url('b7.png');
 }
 .balloons-rotate-behaviour-one {
 	-webkit-animation: balloons_rotate_one linear 10s infinite;
