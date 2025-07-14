@@ -4,20 +4,7 @@ $(window).load(function(){
 });
 $('document').ready(function(){
 	var vw;
-	var positions; // Declare positions in a broader scope
 
-	function positionBalloons() {
-		vw = $(window).width();
-		// Use percentages for 6 balloons
-		positions = [10, 26, 42, 58, 74, 90]; // as % of window width
-		['#b1', '#b2', '#b3', '#b4', '#b5', '#b6'].forEach(function(id, i) {
-			$(id).css({left: (vw * positions[i] / 100) - 30 + 'px', top: '240px'}); // Center balloons
-		});
-	}
-
-	$(window).resize(positionBalloons);
-	// Don't call positionBalloons() on load, wait for the button click.
-	
 	// Hide balloons initially
 	$('.balloons').hide();
 
@@ -74,7 +61,6 @@ $('document').ready(function(){
 		$('#b1,#b4,#b5').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
 
-		// Show balloons before animating
 		$('.balloons').show();
 
 		loop('#b1');
@@ -106,20 +92,25 @@ $('document').ready(function(){
 		
 	$('#wish_message').click(function(){
 		vw = $(window).width();
-		positionBalloons(); // Set positions before animating
+		// Stop all animations on the balloons
+		$('#b1, #b2, #b3, #b4, #b5, #b6').stop();
 
-		$('#b1,#b2,#b3,#b4,#b5,#b6').stop();
-		$('#b1').attr('id','b11');
-		$('#b2').attr('id','b22')
-		$('#b3').attr('id','b33')
-		$('#b4').attr('id','b44')
-		$('#b5').attr('id','b55')
-		$('#b6').attr('id','b66')
-		['#b11', '#b22', '#b33', '#b44', '#b55', '#b66'].forEach(function(id, i) {
-			$(id).animate({top:240, left: (vw * positions[i] / 100) - 30}, 500);
-		});
+		// Define the target positions
+		var positions = [10, 26, 42, 58, 74, 90]; 
+
+		// Animate each balloon to its final position
+		$('#b1').animate({top: '240px', left: (vw * positions[0] / 100) - 40}, 500);
+		$('#b2').animate({top: '240px', left: (vw * positions[1] / 100) - 40}, 500);
+		$('#b3').animate({top: '240px', left: (vw * positions[2] / 100) - 40}, 500);
+		$('#b4').animate({top: '240px', left: (vw * positions[3] / 100) - 40}, 500);
+		$('#b5').animate({top: '240px', left: (vw * positions[4] / 100) - 40}, 500);
+		$('#b6').animate({top: '240px', left: (vw * positions[5] / 100) - 40}, 500);
+		
+		// Show the letters
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
+
+		// Fade out button and show the next one
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
 			$('#story').fadeIn('slow');
 		});
