@@ -1263,6 +1263,8 @@ audio {
 
 .cake-cover {
 	margin-top: 50px;
+	position: relative;
+	z-index: 100;
 }
 .message {
 	position: fixed;
