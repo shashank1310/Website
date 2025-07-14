@@ -1265,7 +1265,12 @@ audio {
 	margin-top: 50px;
 }
 .message {
-	margin-top: 400px;
+	position: fixed;
+	bottom: 80px;
+	left: 0;
+	right: 0;
+	width: 90%;
+	margin: 0 auto;
 	display: none;
 }
 .message p {
@@ -1316,7 +1321,7 @@ audio {
     font-size: 28px;
   }
   .message {
-    margin-top: 200px;
+    bottom: 70px;
   }
   .message p {
     font-size: 18px;
@@ -1330,8 +1335,7 @@ audio {
     font-size: 14px;
   }
   .navbar-fixed-bottom {
-    position: static;
-    margin-top: 20px;
+    /* No longer static to keep it at the bottom */
   }
   .container {
     padding: 0 2px;
