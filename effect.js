@@ -4,16 +4,22 @@ $(window).load(function(){
 });
 $('document').ready(function(){
 	var vw;
+	var positions; // Declare positions in a broader scope
+
 	function positionBalloons() {
 		vw = $(window).width();
 		// Use percentages for 6 balloons
-		var positions = [10, 26, 42, 58, 74, 90]; // as % of window width
+		positions = [10, 26, 42, 58, 74, 90]; // as % of window width
 		['#b1', '#b2', '#b3', '#b4', '#b5', '#b6'].forEach(function(id, i) {
-			$(id+', '+id+'1').css({left: (vw * positions[i] / 100) - 30 + 'px', top: '240px'}); // -30 to center
+			$(id).css({left: (vw * positions[i] / 100) - 30 + 'px', top: '240px'}); // Center balloons
 		});
 	}
+
 	$(window).resize(positionBalloons);
-	positionBalloons();
+	// Don't call positionBalloons() on load, wait for the button click.
+	
+	// Hide balloons initially
+	$('.balloons').hide();
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -68,6 +74,9 @@ $('document').ready(function(){
 		$('#b1,#b4,#b5').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
 
+		// Show balloons before animating
+		$('.balloons').show();
+
 		loop('#b1');
 		loop('#b2');
 		loop('#b3');
@@ -97,6 +106,8 @@ $('document').ready(function(){
 		
 	$('#wish_message').click(function(){
 		vw = $(window).width();
+		positionBalloons(); // Set positions before animating
+
 		$('#b1,#b2,#b3,#b4,#b5,#b6').stop();
 		$('#b1').attr('id','b11');
 		$('#b2').attr('id','b22')
