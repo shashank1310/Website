@@ -3,17 +3,17 @@ $(window).load(function(){
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6').stop();
-			$('#b11').animate({top:240, left: vw-300},500);
-			$('#b22').animate({top:240, left: vw-180},500);
-			$('#b33').animate({top:240, left: vw-60},500);
-			$('#b44').animate({top:240, left: vw+60},500);
-			$('#b55').animate({top:240, left: vw+180},500);
-			$('#b66').animate({top:240, left: vw+300},500);
+	var vw;
+	function positionBalloons() {
+		vw = $(window).width();
+		// Use percentages for 6 balloons
+		var positions = [10, 26, 42, 58, 74, 90]; // as % of window width
+		['#b1', '#b2', '#b3', '#b4', '#b5', '#b6'].forEach(function(id, i) {
+			$(id+', '+id+'1').css({left: (vw * positions[i] / 100) - 30 + 'px', top: '240px'}); // -30 to center
 		});
+	}
+	$(window).resize(positionBalloons);
+	positionBalloons();
 
 	$('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -126,8 +126,7 @@ $('document').ready(function(){
 
 		
 	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
-
+		vw = $(window).width();
 		$('#b1,#b2,#b3,#b4,#b5,#b6').stop();
 		$('#b1').attr('id','b11');
 		$('#b2').attr('id','b22')
@@ -135,12 +134,9 @@ $('document').ready(function(){
 		$('#b4').attr('id','b44')
 		$('#b5').attr('id','b55')
 		$('#b6').attr('id','b66')
-		$('#b11').animate({top:240, left: vw-300},500);
-		$('#b22').animate({top:240, left: vw-180},500);
-		$('#b33').animate({top:240, left: vw-60},500);
-		$('#b44').animate({top:240, left: vw+60},500);
-		$('#b55').animate({top:240, left: vw+180},500);
-		$('#b66').animate({top:240, left: vw+300},500);
+		['#b11', '#b22', '#b33', '#b44', '#b55', '#b66'].forEach(function(id, i) {
+			$(id).animate({top:240, left: (vw * positions[i] / 100) - 30}, 500);
+		});
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
